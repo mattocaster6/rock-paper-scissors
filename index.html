@@ -14,7 +14,10 @@
         <button id="paper">Paper</button>
         <button id="scissors">Scissors</button>
     </div>
-    
+    <div id="results">
+
+    </div>
+
     <script>
 
         function getComputerChoice() {
@@ -41,43 +44,43 @@
             let humanScore = 0;
             let computerScore = 0;
 
+            const rockButton = document.querySelector("#rock");
+            const paperButton = document.querySelector("#paper");
+            const scissorsButton = document.querySelector("#scissors");
+            const results = document.querySelector("#results");
+
             function playRound(humanChoice, computerChoice) {
 
                 if (humanChoice === computerChoice) {
-                    console.log("You tied! You both chose " + computerChoice + "!");
+                    results.textContent = "You tied! You both chose " + computerChoice + "!";
                 } else if (humanChoice === "rock" && computerChoice === "scissors") {
                     humanScore++;
-                    console.log("You win! Rock beats scissors!");
+                    results.textContent = "You win! Rock beats scissors!";
                 } else if (humanChoice === "paper" && computerChoice === "rock") {
                     humanScore++;
-                    console.log("You win! Paper beats rock!");
+                    results.textContent = "You win! Paper beats rock!";
                 } else if (humanChoice === "scissors" && computerChoice === "paper") {
                     humanScore++;
-                    console.log("You win! Scissors beats paper!");
+                    results.textContent = "You win! Scissors beats paper!";
                 } else if (humanChoice === "rock" && computerChoice === "paper") {
                     computerScore++;
-                    console.log("You lose! Rock loses to paper!");
+                    results.textContent = "You lose! Rock loses to paper!";
                 } else if (humanChoice === "paper" && computerChoice === "scissors") {
                     computerScore++;
-                    console.log("You lose! Paper loses to scissors!");
+                    results.textContent = "You lose! Paper loses to scissors!";
                 } else if (humanChoice === "scissors" && computerChoice === "rock") {
                     computerScore++;
-                    console.log("You lose! Scissors loses to rock!");
+                    results.textContent = "You lose! Scissors loses to rock!";
                 } else {
-                    console.log("You didn't enter a valid move!");
+                    results.textContent = "You didn't enter a valid move!";
                 }
 
             }
-            
-            
 
-            if(humanScore > computerScore) {
-                console.log("You win!");
-            } else if (humanScore < computerScore) {
-                console.log("You lost!");
-            } else {
-                console.log("You tied!");
-            }
+
+            rockButton.addEventListener("click", () => playRound("rock", getComputerChoice()));
+            paperButton.addEventListener("click", () => playRound("paper", getComputerChoice()));
+            scissorsButton.addEventListener("click", () => playRound("scissors", getComputerChoice()));
 
         }
 
