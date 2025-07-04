@@ -8,6 +8,13 @@
 </head>
 
 <body>
+
+    <div id="choices">
+        <button id="rock">Rock</button>
+        <button id="paper">Paper</button>
+        <button id="scissors">Scissors</button>
+    </div>
+    
     <script>
 
         function getComputerChoice() {
@@ -62,11 +69,7 @@
 
             }
             
-            for(let i = 0; i < 5; i++) {
-                playRound(getHumanChoice(), getComputerChoice());
-
-                console.log(`Your score: ${humanScore} Computer score: ${computerScore}`);
-            }
+            
 
             if(humanScore > computerScore) {
                 console.log("You win!");
@@ -77,7 +80,6 @@
             }
 
         }
-
 
     </script>
 </body>
