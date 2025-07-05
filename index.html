@@ -8,7 +8,10 @@
 </head>
 
 <body>
-
+    <div id="scores">
+        <p>Player score: <span id="playerScore">0</span></p>
+        <p>Computer score: <span id="computerScore">0</span></p>
+    </div>
     <div id="choices">
         <button id="rock">Rock</button>
         <button id="paper">Paper</button>
@@ -48,6 +51,8 @@
             const paperButton = document.querySelector("#paper");
             const scissorsButton = document.querySelector("#scissors");
             const results = document.querySelector("#results");
+            const playerScoreText = document.querySelector("#playerScore");
+            const computerScoreText = document.querySelector("#computerScore");
 
             function playRound(humanChoice, computerChoice) {
 
@@ -75,6 +80,22 @@
                     results.textContent = "You didn't enter a valid move!";
                 }
 
+                playerScoreText.textContent = humanScore;
+                computerScoreText.textContent = computerScore;
+
+                function disableChoices() {
+                    rockButton.setAttribute("disabled", "");
+                    paperButton.setAttribute("disabled", "");
+                    scissorsButton.setAttribute("disabled", "");
+                }
+                if(humanScore >= 5) {
+                    results.textContent = "You won, congrats!";
+                    disableChoices();
+                } else if (computerScore >= 5) {
+                    results.textContent = "You lost, sorry!";
+                    disableChoices();
+                }
+
             }
 
 
@@ -84,6 +105,7 @@
 
         }
 
+        playGame();
     </script>
 </body>
 
